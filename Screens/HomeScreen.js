@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { useState } from 'react';
 import RecipeData from './../test_recipes.json';
+import { Icon } from '@rneui/themed';
+
 const HomeScreen = ({ navigation }) => {
     const [isPantry, setIsPantry] = useState();
 
@@ -25,26 +27,28 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <View style={styles.button2}>
-                <Button
-                    title="Generate Recipes"
-                    onPress={() => {
+                    <Button
+                        title="Generate Recipes"
+                        onPress={() => {
 
-                        navigation.navigate('RecipePage');
+                            navigation.navigate('RecipePage');
 
-                }}
-                />
+                        }}
+                    />
                 </View>
             </View>
 
-            <Icon
-                raised
-                name='heartbeat'
-                type='font-awesome'
-                color='#f50'
-                onPress={() => console.log('hello')} />
+            <View style={styles.icon}>
+                <Icon
+                    raised
+                    name='info-circle'
+                    type='font-awesome'
+                    color='#4d79ff'
+                    onPress={() => navigation.navigate('Info')} 
+                />
+            </View>
 
             <StatusBar style="auto" />
-
 
         </View>
     );
@@ -84,6 +88,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute',
         bottom: 270,
+    },
+    icon: {
+        width: '100%',
+        alignItems: 'flex-end',
+        position: 'absolute',
+        paddingRight: 30,
+        bottom: 40,
     }
 });
 
