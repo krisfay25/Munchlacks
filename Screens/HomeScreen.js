@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Button, ButtonGroup } from '@rneui/base';
 import { Header } from '@rneui/themed';
-import HeaderComp from '../Components/Header'
 
 const HomeScreen = ({ navigation }) => {
     return (

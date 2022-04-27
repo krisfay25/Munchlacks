@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-=======
 import { StyleSheet, FlatList, Text, View, Alert, TouchableOpacity, TextInput } from 'react-native';
 import React, {useState} from 'react';
 import { ListItem, Avatar } from '@rneui/themed'
 import { Button } from '@rneui/base';
->>>>>>> 9c5e5167a0a031a2ad3b1e7222b5580cfa0c3007
 
 const NewPantry = ({ navigation }) => {
     let ingredients = [{text: "INGREDIENTS"}]
