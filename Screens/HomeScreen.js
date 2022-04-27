@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { Header } from '@rneui/themed';
-import { Icon } from '@rneui/themed';
-
+import { useState } from 'react';
+import RecipeData from './../test_recipes.json';
 const HomeScreen = ({ navigation }) => {
+    const [isPantry, setIsPantry] = useState();
+
     return (
         <View style={styles.container}>
 
@@ -24,10 +25,14 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <View style={styles.button2}>
-                    <Button
-                        title="Generate Recipes"
-                        onPress={() => navigation.navigate('RecipePage')}
-                    />
+                <Button
+                    title="Generate Recipes"
+                    onPress={() => {
+
+                        navigation.navigate('RecipePage');
+
+                }}
+                />
                 </View>
             </View>
 
@@ -81,13 +86,5 @@ const styles = StyleSheet.create({
         bottom: 270,
     }
 });
-/*<Button style={styles.button}
-                title="Pantry"
-                onPress={() => navigation.navigate('Pantry')}
-            />
 
-            <Button style={styles.button}
-                title="Generate Recipes"
-                onPress={() => navigation.navigate('RecipePage')}
-            /> */
 export default HomeScreen;
