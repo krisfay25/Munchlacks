@@ -48,12 +48,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button1: {
-        paddingBottom: 10, 
+        paddingBottom: 10,
+        width: '50%' 
         //paddingVertical: 10,
     },
     button2: {
         //paddingBottom: 10, 
         marginTop: 10,
+        width: '50%'
     },
     title: {
         fontSize: 32,
