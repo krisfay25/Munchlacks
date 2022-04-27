@@ -1,42 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { DataTable } from 'react-native-paper';
-
-const optionsPerPage = [2, 3, 4];
-
+import { StyleSheet, FlatList, Text, View, Alert, TouchableOpacity, TextInput } from 'react-native';
+import React, {useState} from 'react';
+import { ListItem, Avatar } from '@rneui/themed'
+import { Button } from '@rneui/base';
 
 const NewPantry = ({ navigation }) => {
+    let ingredients = [{text: "INGREDIENTS"}]
 
-    const [page, setPage] = React.useState(0);
-    const [itemsPerPage, setItemsPerPage] = React.useState(optionsPerPage[0]);
+    const [ingredient, setIngredient] = useState(ingredients);
 
-    React.useEffect(() => {
-        setPage(0);
-    }, [itemsPerPage]);
+    const addIngredient = () => {
+        if (ingredient == "") return
+
+        ingredients.push({ingredient})
+        setIngredient('')
+        
+    }
+
+    const logInput = (input)=>{
+        setIngredient(input)
+    }
 
     return (
         <View style={styles.container}>
-            <DataTable>
-                <DataTable.Header>
-                    <DataTable.Title>Ingredient</DataTable.Title>
-                </DataTable.Header>
 
-                <DataTable.Row>
-                    <DataTable.Cell>Frozen yogurt</DataTable.Cell>
-                </DataTable.Row>
-
-                <DataTable.Pagination
-                    page={page}
-                    numberOfPages={3}
-                    onPageChange={(page) => setPage(page)}
-                    label="1-2 of 6"
-                    optionsPerPage={optionsPerPage}
-                    itemsPerPage={itemsPerPage}
-                    setItemsPerPage={setItemsPerPage}
-                    showFastPagination
-                    optionsLabel={'Rows per page'}
-                />
-            </DataTable>
         </View>
     );
 }
