@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { Button } from '@rneui/base';
 
 const Pantry = ({ navigation }) => {
     return (
@@ -6,6 +7,16 @@ const Pantry = ({ navigation }) => {
             <Text>
                 Pantry is empty!
             </Text>
+
+            <Button style={styles.button}
+                title = "New Pantry"
+                onPress={() => navigation.navigate('NewPantry')}
+            />
+
+            <Button style={styles.button}
+                title = "Open Existing Pantry"
+            />
+
         </View>
     );
 }
