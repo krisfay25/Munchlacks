@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { Button, ButtonGroup } from '@rneui/base';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { Header } from '@rneui/themed';
 
 const HomeScreen = ({ navigation }) => {
@@ -10,21 +9,25 @@ const HomeScreen = ({ navigation }) => {
             <Text style={styles.title}>
                 Munchlacks!
             </Text>
+
             <Image source={require('../Images/munchlax-pokemon.png')}
                 style={styles.image}
             />
 
-            <View style={ styles.bottomView}>
-            <Button style={styles.button}
-                title="Pantry"
-                onPress={() => navigation.navigate('Pantry')}
-            />
+            <View style={styles.bottomView}>
+                <View style={styles.button1}>
+                    <Button
+                        title="Pantry"
+                        onPress={() => navigation.navigate('Pantry')}
+                    />
+                </View>
 
-            <Button style={styles.button}
-                title="Generate Recipes"
-                onPress={() => navigation.navigate('RecipePage')}
-            />
-
+                <View style={styles.button2}>
+                <Button
+                    title="Generate Recipes"
+                    onPress={() => navigation.navigate('RecipePage')}
+                />
+                </View>
             </View>
 
             <StatusBar style="auto" />
@@ -38,9 +41,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#58879d',
         alignItems: 'center',
     },
-    button: {
-        alignItems: 'center',
-        marginTop: 100,
+    button1: {
+        paddingBottom: 10, 
+        //paddingVertical: 10,
+    },
+    button2: {
+        //paddingBottom: 10, 
+        marginTop: 10,
     },
     title: {
         fontSize: 32,
@@ -49,18 +56,18 @@ const styles = StyleSheet.create({
         top: '5%',
     },
     image: {
-        top: '5%',
+        top: '15%',
         width: 200,
         height: 200,
     },
-    bottomView:{
-        width: '100%', 
-        height: 50, 
-        justifyContent: 'center', 
+    bottomView: {
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        bottom: 200,
-      }
+        bottom: 270,
+    }
 });
 /*<Button style={styles.button}
                 title="Pantry"
