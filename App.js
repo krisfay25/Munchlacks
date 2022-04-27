@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Screens/HomeScreen';
 import Pantry from './Screens/Pantry';
-import Recipes from './Screens/Recipes';
+import Recipes from './Screens/RecipePage';
 import NewPantry from './Screens/NewPantry';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
