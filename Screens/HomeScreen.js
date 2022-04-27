@@ -11,8 +11,10 @@ const HomeScreen = ({ navigation }) => {
                 Munchlacks!
             </Text>
             <Image source={require('../Images/munchlax-pokemon.png')}
-                style={styles.image} />
+                style={styles.image}
+            />
 
+            <View style={ styles.bottomView}>
             <Button style={styles.button}
                 title="Pantry"
                 onPress={() => navigation.navigate('Pantry')}
@@ -22,6 +24,9 @@ const HomeScreen = ({ navigation }) => {
                 title="Generate Recipes"
                 onPress={() => navigation.navigate('RecipePage')}
             />
+
+            </View>
+
             <StatusBar style="auto" />
         </View>
     );
@@ -34,6 +39,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
+        alignItems: 'center',
+        marginTop: 100,
     },
     title: {
         fontSize: 32,
@@ -46,6 +53,14 @@ const styles = StyleSheet.create({
         width: 200,
         height: 200,
     },
+    bottomView:{
+        width: '100%', 
+        height: 50, 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 200,
+      }
 });
 /*<Button style={styles.button}
                 title="Pantry"
