@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { DataTable } from 'react-native-paper';
 
 const optionsPerPage = [2, 3, 4];
 
