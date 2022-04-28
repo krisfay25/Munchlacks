@@ -63,10 +63,8 @@ const styles = StyleSheet.create({
     button1: {
         paddingBottom: 10,
         width: '50%'
-        //paddingVertical: 10,
     },
-    button2: {
-        //paddingBottom: 10, 
+    button2: { 
         marginTop: 10,
         width: '50%'
     },
