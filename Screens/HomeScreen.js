@@ -2,9 +2,31 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { useState } from 'react';
 import RecipeData from './../test_recipes.json';
+import * as SQLite from 'expo-sqlite';
+
+const db = SQLite.openDatabase('db.AppDB');
+
+const createTable = () => {
+    db.transaction(tx => {
+        tx.executeSql(
+            "CREATE TABLE IF NOT EXISTS Pantry"
+            + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL UNIQUE);"
+        )
+    });
+
+    /*db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry (Name) values ('Cum')", null,
+            (txObj, resultSet) => {},
+            (txObj, error) => console.warn('DB error: ',error)
+        )
+    });*/
+}
+
 const HomeScreen = ({ navigation }) => {
     const [isPantry, setIsPantry] = useState();
-
+    createTable();
+    
     return (
         <View style={styles.container}>
 
@@ -20,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
                 <View style={styles.button1}>
                     <Button
                         title="Pantry"
-                        onPress={() => navigation.navigate('Pantry')}
+                        onPress={() => navigation.navigate('Pantry', db)}
                     />
                 </View>
 
@@ -29,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
                     title="Generate Recipes"
                     onPress={() => {
 
-                        navigation.navigate('RecipePage');
+                        navigation.navigate('RecipePage', db);
 
                 }}
                 />
