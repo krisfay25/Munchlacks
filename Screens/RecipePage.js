@@ -1,20 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import { useState } from 'react';
 
 const Recipes = ({ route, navigation }) => {
+    const [loading, setLoading] = useState(true);
     let db = route.params;
-    /*db.transaction(tx => {
+
+    db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry (Name) values ('Ussop')", null,
-            (txObj, resultSet) => {console.log("Success!")},
-            (txObj, error) => console.warn('DB error: ',error)
+            "SELECT COUNT(*) AS num FROM Pantry", null,
+            (txObj, resultSet) => {
+                if (resultSet.rows._array[0]["num"] == 0) {
+                    Alert.alert("Please Create a Pantry First");
+                }
+                else {
+                    setLoading(false);
+                }
+            },
+            (txObj, error) => console.warn('DB error: ', error)
         )
-    });*/
+    });
     return (
         <View style={styles.container}>
-            <Text>
-                No recipes for you :(
-            </Text>
+            {loading ? <Text>Loading...</Text> :
+                <Text>Done!</Text>
+            }
         </View>
     );
 }

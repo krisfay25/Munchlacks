@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
 import RecipeData from './../test_recipes.json';
 import { Icon } from '@rneui/themed';
 import * as SQLite from 'expo-sqlite';
@@ -15,19 +15,10 @@ const createTable = () => {
         )
     });
 
-    /*db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry (Name) values ('Cum')", null,
-            (txObj, resultSet) => {},
-            (txObj, error) => console.warn('DB error: ',error)
-        )
-    });*/
 }
 
 const HomeScreen = ({ navigation }) => {
-    const [isPantry, setIsPantry] = useState();
     createTable();
-    
     return (
         <View style={styles.container}>
 
@@ -51,9 +42,7 @@ const HomeScreen = ({ navigation }) => {
                     <Button
                         title="Generate Recipes"
                         onPress={() => {
-
                         navigation.navigate('RecipePage', db);
-
                         }}
                     />
                 </View>
@@ -65,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                     name='info-circle'
                     type='font-awesome'
                     color='#4d79ff'
-                    onPress={() => navigation.navigate('Info')} 
+                    onPress={() => navigation.navigate('Info')}
                 />
             </View>
 
