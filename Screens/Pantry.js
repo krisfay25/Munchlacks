@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '@rneui/base';
 
-const Pantry = ({ navigation }) => {
+const Pantry = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <Text>

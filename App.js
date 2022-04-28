@@ -6,7 +6,11 @@ import Recipes from './Screens/RecipePage';
 import NewPantry from './Screens/NewPantry';
 import Info from './Screens/Info';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { LogBox } from 'react-native';
 
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 const Stack = createNativeStackNavigator();
 
 export default function App() {
