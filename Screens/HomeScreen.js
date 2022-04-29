@@ -8,10 +8,38 @@ import * as SQLite from 'expo-sqlite';
 const db = SQLite.openDatabase('db.AppDB');
 
 const createTable = () => {
+
+    db.transaction(tx => {
+        tx.executeSql(
+            "Drop Table Pantry"
+        )
+    });
+
     db.transaction(tx => {
         tx.executeSql(
             "CREATE TABLE IF NOT EXISTS Pantry"
             + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL UNIQUE);"
+        )
+    });
+
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Flour')" 
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Sugar')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Egg')" 
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Cheese')" 
         )
     });
 
