@@ -8,6 +8,7 @@ const Pantry = ({ route, navigation }) => {
     const [isPantry, setIsPantry] = useState(false);
     const [pantry, setPantry] = useState([]);
     const [modalAddVisible, setModalAddVisible] = useState(false);
+    const [modalRemoveVisible, setModalRemoveVisible] = useState(false);
     const [input, setInput] = useState('');
     let db = route.params;
 
@@ -52,7 +53,21 @@ const Pantry = ({ route, navigation }) => {
             tx.executeSql(
                 "INSERT INTO Pantry(Name) VALUES (?)", [ingredient],
                 (txObj, resultSet) => {
-                    console.log("Ingredient added");
+                    setLoading(true);
+                    getPantry();
+                },
+                (txObj, error) => {
+                    console.warn('DB error: ', error)
+                }
+            )
+        });
+    }
+
+    const RemoveIngredient = (ingredient) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "DELETE FROM Pantry WHERE NAME = ?", [ingredient],
+                (txObj, resultSet) => {
                     setLoading(true);
                     getPantry();
                 },
@@ -113,7 +128,51 @@ const Pantry = ({ route, navigation }) => {
                                     </View>
                                 </View>
                             </Modal>
+                            
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={modalRemoveVisible}
+                                onRequestClose={() => {
+                                    Alert.alert("Modal has been closed.");
+                                    setModalVisible(!modalRemoveVisible);
+                                }}
+                            >
+                                <View style={styles.centeredView}>
+                                    <View style={styles.modalView}>
+                                        <Text style={styles.modalText}>What would you like to Remove?</Text>
+                                        <TextInput
+                                            style={styles.input}
+                                            placeholder='Example: "Flour"'
+                                            onChangeText={newText => setInput(newText)}
+                                        />
+                                        <Pressable
+                                            style={[styles.buttonPressable, styles.buttonClose]}
+                                            onPress={() => {
+                                                setModalRemoveVisible(!modalRemoveVisible);
+                                                let flag = false;
+                                                let temp = input[0].toUpperCase() + input.substring(1);
+                                                pantry.forEach(x => {
+                                                    if (x.Name.localeCompare(temp) == 0) {
+                                                        flag = true;
+                                                    }
+                                                })
 
+                                                if (flag) {
+                                                    RemoveIngredient(temp);
+                                                    navigation.navigate('Pantry', db);
+                                                }
+                                                else{
+                                                    Alert.alert("No match was found in the pantry");
+                                                }
+
+                                            }}
+                                        >
+                                            <Text style={styles.textStyle}>Submit</Text>
+                                        </Pressable>
+                                    </View>
+                                </View>
+                            </Modal>
                             <Card containerStyle={styles.cardContainer}>
                                 <Card.Title>Pantry</Card.Title>
                                 <Card.Divider />
@@ -136,7 +195,8 @@ const Pantry = ({ route, navigation }) => {
                                 </View>
                                 <View style={styles.button}>
                                     <Button
-                                        title="Remove Ingredient" />
+                                        title="Remove Ingredient" 
+                                        onPress={() => setModalRemoveVisible(true)}/>
                                 </View>
                             </View>
                         </View>
