@@ -1,1 +1,75 @@
-{}
+{
+    "breakfast": [
+        {
+            "url": "https://www.allrecipes.com/recipe/21202/ham-and-cheese-breakfast-tortillas/",
+            "ingredients": [
+                "eggs",
+                "milk",
+                "ham",
+                "green onions",
+                "salt",
+                "pepper",
+                "cheddar cheese",
+                "tortillas"
+            ],
+            "name": "Ham and Cheese Breakfast Tortillas"
+        },
+        {
+            "url": "https://www.allrecipes.com/recipe/86587/scrambled-eggs-done-right/",
+            "ingredients": [
+                "eggs",
+                "mayonnaise",
+                "water",
+                "butter",
+                "salt",
+                "pepper"
+            ],
+            "name": "Scrambled Eggs Done Right"
+        },
+        {
+            "url": "https://www.allrecipes.com/recipe/16895/fluffy-french-toast/",
+            "ingredients": [
+                "flour",
+                "milk",
+                "eggs",
+                "sugar",
+                "vanilla exctract",
+                "cinnamon",
+                "salt",
+                "bread"
+            ],
+            "name": "Fluffy French Toast"
+        }
+    ],
+
+    "lunch": [
+        {
+            "url": "https://www.allrecipes.com/recipe/11679/homemade-mac-and-cheese/",
+            "ingredients": [
+                "elbow macaroni",
+                "butter",
+                "flour",
+                "milk",
+                "cheddar cheese",
+                "parmesan cheese",
+                "bread crumbs",
+                "paprika"
+            ],
+            "name": "Homemade Mac and Cheese"
+        },
+        {
+            "url": "https://www.allrecipes.com/recipe/24771/basic-mashed-potatoes/",
+            "ingredients": [
+                "potatoes",
+                "butter",
+                "milk",
+                "salt",
+                "pepper"
+            ],
+            "name": "Basic Mashed Potatoes"
+        },
+        {
+            "url": "https://www.allrecipes.com/recipe/279903/garlic-brown-sugar-chicken-thighs/",
+        }
+    ]
+}

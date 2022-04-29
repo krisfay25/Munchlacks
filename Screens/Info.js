@@ -14,7 +14,7 @@ const Info = ({ navigation }) => {
                     Munchlacks is here to help you make recipes with the food you have at home!
                     {'\n'}
                     {'\n'}
-                    Here is a quick description of how the Munchlacks works.
+                    Here is a quick description of how Munchlacks works.
                     {'\n'}
                     {'\n'}
                     1. Go to the pantry from the homes page and add ingredients to your pantry.
