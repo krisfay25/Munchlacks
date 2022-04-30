@@ -83,53 +83,55 @@ const Pantry = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalAddVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalAddVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>What would you like to add?</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='Example: "Flour"'
+                            onChangeText={newText => setInput(newText)}
+                        />
+                        <Pressable
+                            style={[styles.buttonPressable, styles.buttonClose]}
+                            onPress={() => {
+                                setModalAddVisible(!modalAddVisible);
+                                if (input != "") {
+                                    let flag = false;
+                                    let temp = input[0].toUpperCase() + input.substring(1);
+                                    pantry.forEach(x => {
+                                        if (x.Name.localeCompare(temp) == 0) {
+                                            Alert.alert(temp + " is already in your pantry");
+                                            flag = true;
+                                        }
+                                    })
+
+                                    if (!flag) {
+                                        AddIngredient(temp);
+                                        navigation.navigate('Pantry', db);
+                                    }
+                                }
+
+                            }}
+                        >
+                            <Text style={styles.textStyle}>Submit</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
             {loading ? <Text>Loading...</Text> :
                 isPantry ?
                     <View>
                         <View style={{ flex: 3 }}>
-                            <Modal
-                                animationType="slide"
-                                transparent={true}
-                                visible={modalAddVisible}
-                                onRequestClose={() => {
-                                    Alert.alert("Modal has been closed.");
-                                    setModalVisible(!modalAddVisible);
-                                }}
-                            >
-                                <View style={styles.centeredView}>
-                                    <View style={styles.modalView}>
-                                        <Text style={styles.modalText}>What would you like to add?</Text>
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder='Example: "Flour"'
-                                            onChangeText={newText => setInput(newText)}
-                                        />
-                                        <Pressable
-                                            style={[styles.buttonPressable, styles.buttonClose]}
-                                            onPress={() => {
-                                                setModalAddVisible(!modalAddVisible);
-                                                let flag = false;
-                                                let temp = input[0].toUpperCase() + input.substring(1);
-                                                pantry.forEach(x => {
-                                                    if (x.Name.localeCompare(temp) == 0) {
-                                                        Alert.alert(temp + " is already in your pantry");
-                                                        flag = true;
-                                                    }
-                                                })
 
-                                                if (!flag && temp != "") {
-                                                    AddIngredient(temp);
-                                                    navigation.navigate('Pantry', db);
-                                                }
-
-                                            }}
-                                        >
-                                            <Text style={styles.textStyle}>Submit</Text>
-                                        </Pressable>
-                                    </View>
-                                </View>
-                            </Modal>
-                            
                             <Modal
                                 animationType="slide"
                                 transparent={true}
@@ -151,20 +153,22 @@ const Pantry = ({ route, navigation }) => {
                                             style={[styles.buttonPressable, styles.buttonClose]}
                                             onPress={() => {
                                                 setModalRemoveVisible(!modalRemoveVisible);
-                                                let flag = false;
-                                                let temp = input[0].toUpperCase() + input.substring(1);
-                                                pantry.forEach(x => {
-                                                    if (x.Name.localeCompare(temp) == 0) {
-                                                        flag = true;
-                                                    }
-                                                })
+                                                if (input != "") {
+                                                    let flag = false;
+                                                    let temp = input[0].toUpperCase() + input.substring(1);
+                                                    pantry.forEach(x => {
+                                                        if (x.Name.localeCompare(temp) == 0) {
+                                                            flag = true;
+                                                        }
+                                                    })
 
-                                                if (flag) {
-                                                    RemoveIngredient(temp);
-                                                    navigation.navigate('Pantry', db);
-                                                }
-                                                else{
-                                                    Alert.alert("No match was found in the pantry");
+                                                    if (flag) {
+                                                        RemoveIngredient(temp);
+                                                        navigation.navigate('Pantry', db);
+                                                    }
+                                                    else {
+                                                        Alert.alert("No match was found in the pantry");
+                                                    }
                                                 }
 
                                             }}
@@ -187,7 +191,7 @@ const Pantry = ({ route, navigation }) => {
                             </Card>
 
                         </View>
-                        <View style={{flex: 1}}>
+                        <View style={{ flex: 1 }}>
                             <View style={styles.buttonContainer}>
                                 <View style={styles.button}>
                                     <Button
@@ -196,17 +200,26 @@ const Pantry = ({ route, navigation }) => {
                                 </View>
                                 <View style={styles.button}>
                                     <Button
-                                        title="Remove Ingredient" 
-                                        onPress={() => setModalRemoveVisible(true)}/>
+                                        title="Remove Ingredient"
+                                        onPress={() => setModalRemoveVisible(true)} />
                                 </View>
                             </View>
                         </View>
                     </View>
                     :
-                    <Button
-                        title="New Pantry"
-                        onPress={() => navigation.navigate('NewPantry')}
-                    />
+                    <View>
+                        <View style={{
+                            position: 'relative',
+                            flex: 1,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}>
+                            <Button
+                                title="Add Ingredient"
+                                onPress={() => setModalAddVisible(true)} />
+                        </View>
+                    </View>
             }
 
         </View>

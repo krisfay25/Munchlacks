@@ -25,7 +25,7 @@ const createTable = () => {
 
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Flour')" 
+            "INSERT INTO Pantry(Name) VALUES ('Flour')"
         )
     });
     db.transaction(tx => {
@@ -35,12 +35,12 @@ const createTable = () => {
     });
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Egg')" 
+            "INSERT INTO Pantry(Name) VALUES ('Egg')"
         )
     });
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Cheese')" 
+            "INSERT INTO Pantry(Name) VALUES ('Cheese')"
         )
     });
 
@@ -71,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
                     <Button
                         title="Generate Recipes"
                         onPress={() => {
-                        navigation.navigate('RecipePage', db);
+                            navigation.navigate('RecipePage', db);
                         }}
                     />
                 </View>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         width: '50%'
     },
-    button2: { 
+    button2: {
         marginTop: 10,
         width: '50%'
     },
