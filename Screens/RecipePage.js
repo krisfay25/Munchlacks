@@ -7,6 +7,24 @@ const Lunch = 1;
 const Dinner = 2;
 const Snack = 3;
 
+//Types/Styles of food
+const foodTypes = [
+    "American",
+    "Mexican",
+    "Italian",
+    "Chinese",
+    "Indian",
+    "Thai",
+    "Greek",
+    "Japanese",
+    "Nigerian",
+    "Filipino",
+    "Vietnamese",
+    "Korean",
+    "Cambodian",
+    "French"
+];
+
 const Recipes = ({ route, navigation }) => {
     var foodType;
     const [loading, setLoading] = useState(true);
@@ -28,6 +46,12 @@ const Recipes = ({ route, navigation }) => {
             (txObj, error) => console.warn('DB error: ', error)
         )
     });
+
+    const [value, setValue] = React.useState([]);
+
+    const onChange = (event) => {
+        setValue([...event.value]);
+    };
 
 
     return (
@@ -93,6 +117,7 @@ const Recipes = ({ route, navigation }) => {
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
                                 <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
+                                <MultiSelect data={foodTypes} onChange={onChange} value={value} />
                             </View>
                         </View>
                     </Modal>

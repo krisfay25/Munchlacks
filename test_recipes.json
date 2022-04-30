@@ -70,6 +70,70 @@
         },
         {
             "url": "https://www.allrecipes.com/recipe/279903/garlic-brown-sugar-chicken-thighs/",
+            "ingredients": [
+                "chicken",
+                "salt",
+                "pepper",
+                "butter",
+                "garlic",
+                "brown sugar",
+                "honey",
+                "oregano",
+                "thyme",
+                "basil"
+            ],
+            "name": "Garlic Brown Sugar Chicken Thighs"
+        }
+    ],
+
+    "dinner": [
+        {
+            "url": "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/",
+            "ingredients": [
+                "italian sausage",
+                "grounbd beef",
+                "onion",
+                "garlic",
+                "tomatoes",
+                "tomato paste",
+                "tomato sauce",
+                "water",
+                "sugar",
+                "basil",
+                "fennel seeds",
+                "italian seasoning",
+                "salt",
+                "pepper",
+                "parsley",
+                "lasagna noodles",
+                "ricotta cheese",
+                "eggs",
+                "mozzarella cheese",
+                "parmesan cheese"
+            ],
+            "name": "World's Best Lasagna"
+        },
+        {
+            "url": "https://www.allrecipes.com/recipe/216758/moms-fabulous-chicken-pot-pie-with-biscuit-crust/",
+            "ingredients": [
+                "butter",
+                "onion",
+                "celery",
+                "carrots",
+                "peas",
+                "parsley",
+                "thyme",
+                "flour",
+                "chicken broth",
+                "half and half",
+                "pepper",
+                "salt",
+                "chicken",
+                "biscuits",
+                "eggs",
+                "water"
+            ],
+            "name": "Mom's Fabulous Chicken Pot Pie with Biscuit Crust"
         }
     ]
 }
