@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking } from 'react-native';
 import { Button } from '@rneui/themed';
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
+import RecipeData from './../test_recipes.json';
+import { Card } from '@rneui/themed';
 
 const Breakfast = 0;
 const Lunch = 1;
@@ -75,13 +76,126 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
 );
 
 const Recipes = ({ route, navigation }) => {
-    var foodType;
+    const [foodType, setFoodType] = useState({});
     const [loading, setLoading] = useState(true);
+    const [recipesGenerated, setRecipesGenerated] = useState(false);
     const [modalVisible, setModalVisible] = useState(true);
     const [cuisineVisible, setCuisineVisible] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
-
+    const [pantry, setPantry] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     let db = route.params;
+
+    const getPantry = () => {
+        // checks the database whether there is an existing pantry
+        db.transaction(tx => {
+            tx.executeSql(
+                "SELECT COUNT(*) AS num FROM Pantry", null,
+                (txObj, resultSet) => {
+                    if (resultSet.rows._array[0]["num"] == 0) {
+                        setLoading(false);
+                    }
+                    else {
+                        // if pantry, collect ingredients and put in local variable
+                        db.transaction(tx => {
+                            tx.executeSql(
+                                "SELECT * FROM Pantry", null,
+                                (txObj, resultSet) => {
+                                    pantry.splice(0, pantry.length);
+
+                                    resultSet.rows._array.forEach(x => {
+                                        pantry.push(x);
+                                    });
+                                    setLoading(false);
+                                },
+                                (txObj, error) => console.warn('DB error: ', error)
+                            )
+                        });
+
+
+                    }
+                },
+                (txObj, error) => console.warn('DB error: ', error)
+            )
+        });
+    }
+
+    const getFilteredRecipes = (foodTime) => {
+        var flag = false;
+        var flag2 = false;
+        switch (foodTime) {
+            case Breakfast:
+                RecipeData.breakfast.forEach(x => {
+                    x.ingredients.forEach(y => {
+                        pantry.forEach(z => {
+                            if (y.localeCompare(z.Name) == 0) {
+                                flag2 = true;
+                            }
+                        })
+
+                        if (!flag2) {
+                            flag = true;
+                        }
+                        flag2 = false;
+
+                    })
+                    if (!flag) {
+                        recipes.push(x);
+                    }
+                    flag = false;
+                })
+                break;
+
+            case Lunch:
+                RecipeData.lunch.forEach(x => {
+                    x.ingredients.forEach(y => {
+                        pantry.forEach(z => {
+                            if (y.localeCompare(z.Name) == 0) {
+                                flag2 = true;
+                            }
+                        })
+
+                        if (!flag2) {
+                            flag = true;
+                        }
+                        flag2 = false;
+
+                    })
+                    if (!flag) {
+                        recipes.push(x);
+                    }
+                    flag = false;
+                })
+                break;
+
+            case Dinner:
+                RecipeData.dinner.forEach(x => {
+                    x.ingredients.forEach(y => {
+                        pantry.forEach(z => {
+                            console.log(y + ", " + z.Name + " = " + y.localeCompare(z.Name));
+                            if (y.localeCompare(z.Name) == 0) {
+                                flag2 = true;
+                            }
+                        })
+
+                        if (!flag2) {
+                            flag = true;
+                        }
+                        flag2 = false;
+
+                    })
+                    if (!flag) {
+                        recipes.push(x);
+                    }
+                    flag = false;
+                })
+                break;
+        }
+        setRecipesGenerated(true);
+        console.log(recipes);
+    }
+
+    getPantry();
 
     db.transaction(tx => {
         tx.executeSql(
@@ -105,88 +219,112 @@ const Recipes = ({ route, navigation }) => {
         return (
             <Item
                 item={item}
-                onPress={() => setSelectedId(item.id)}
+                onPress={() => {
+                    setSelectedId(item.id);
+                    getFilteredRecipes(foodType);
+                }}
                 backgroundColor={{ backgroundColor }}
                 textColor={{ color }}
             />
         );
     };
 
+    const recipeItem = ({ item }) => {
+        return (
+            <Card onPress={() => navigation.navigate('RecipeDetailed', item)}>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Divider />
+                <Text style={{ color: 'blue' }} onPress={() =>
+                    Linking.openURL(item.url)}>{item.url}</Text>
+            </Card>
+        );
+    };
+
     return (
         <View style={styles.container}>
             {loading ? <Text>Generating Yummy Recipes....</Text> :
-                <View>
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => {
-                            setModalVisible(!modalVisible);
-                            navigation.navigate('Home');
-                        }}
-                    >
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <Text style={styles.modalText}>What Time is it?</Text>
-                                <View style={styles.button}>
-                                    <Button title={"Breakfast"}
-                                        onPress={() => {
-                                            foodType = Breakfast;
-                                            setModalVisible(false);
-                                            setCuisineVisible(true);
-                                        }} />
-                                </View>
-                                <View style={styles.button}>
-                                    <Button title={"Lunch"}
-                                        onPress={() => {
-                                            foodType = Lunch;
-                                            setModalVisible(false);
-                                            setCuisineVisible(true);
-                                        }} />
-                                </View>
-                                <View style={styles.button}>
-                                    <Button title={"Dinner"}
-                                        onPress={() => {
-                                            foodType = Dinner;
-                                            setModalVisible(false);
-                                            setCuisineVisible(true);
-                                        }} />
-                                </View>
-                                <View style={styles.button}>
-                                    <Button title={"Snack"}
-                                        onPress={() => {
-                                            foodType = Snack;
-                                            setModalVisible(false);
-                                            setCuisineVisible(true);
-                                        }} />
+                recipesGenerated ?
+                    <View style={{ position: 'absolute', alignItems: 'center' }}>
+                        <FlatList
+                            data={recipes}
+                            renderItem={recipeItem}
+                            keyExtractor={item => item.id}
+                        />
+                    </View>
+                    :
+                    <View>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                                setModalVisible(!modalVisible);
+                                navigation.navigate('Home');
+                            }}
+                        >
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <Text style={styles.modalText}>What Time is it?</Text>
+                                    <View style={styles.button}>
+                                        <Button title={"Breakfast"}
+                                            onPress={() => {
+                                                setFoodType(Breakfast);
+                                                setModalVisible(false);
+                                                setCuisineVisible(true);
+                                            }} />
+                                    </View>
+                                    <View style={styles.button}>
+                                        <Button title={"Lunch"}
+                                            onPress={() => {
+                                                setFoodType(Lunch);
+                                                setModalVisible(false);
+                                                setCuisineVisible(true);
+                                            }} />
+                                    </View>
+                                    <View style={styles.button}>
+                                        <Button title={"Dinner"}
+                                            onPress={() => {
+                                                setFoodType(Dinner);
+                                                setModalVisible(false);
+                                                setCuisineVisible(true);
+                                            }} />
+                                    </View>
+                                    <View style={styles.button}>
+                                        <Button title={"Snack"}
+                                            onPress={() => {
+                                                foodType = Snack;
+                                                setModalVisible(false);
+                                                setCuisineVisible(true);
+                                            }} />
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                    </Modal>
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={cuisineVisible}
-                        onRequestClose={() => {
-                            setModalVisible(!modalVisible);
-                            setCuisineVisible(!cuisineVisible);
-                        }}
-                    >
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
-                                <FlatList
-                                    data={foodTypes}
-                                    renderItem={renderItem}
-                                    keyExtractor={(item) => item.id}
-                                    extraData={selectedId}
-                                />
+                        </Modal>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={cuisineVisible}
+                            onRequestClose={() => {
+                                setModalVisible(!modalVisible);
+                                setCuisineVisible(!cuisineVisible);
+                            }}
+                        >
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
+                                    <FlatList
+                                        data={foodTypes}
+                                        renderItem={renderItem}
+                                        keyExtractor={(item) => item.id}
+                                        extraData={selectedId}
+                                    />
+                                </View>
                             </View>
-                        </View>
-                    </Modal>
-                </View>
+                        </Modal>
+                    </View >
             }
-        </View>
+
+        </View >
     );
 }
 

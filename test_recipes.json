@@ -1,42 +1,45 @@
 {
     "breakfast": [
         {
+            "id": 1,
             "url": "https://www.allrecipes.com/recipe/21202/ham-and-cheese-breakfast-tortillas/",
             "ingredients": [
-                "eggs",
-                "milk",
-                "ham",
-                "green onions",
-                "salt",
-                "pepper",
-                "cheddar cheese",
-                "tortillas"
+                "Eggs",
+                "Milk",
+                "Ham",
+                "Green onions",
+                "Salt",
+                "Pepper",
+                "Cheddar cheese",
+                "Tortillas"
             ],
             "name": "Ham and Cheese Breakfast Tortillas"
         },
         {
+            "id": 2,
             "url": "https://www.allrecipes.com/recipe/86587/scrambled-eggs-done-right/",
             "ingredients": [
-                "eggs",
-                "mayonnaise",
-                "water",
-                "butter",
-                "salt",
-                "pepper"
+                "Eggs",
+                "Mayonnaise",
+                "Water",
+                "Butter",
+                "Salt",
+                "Pepper"
             ],
             "name": "Scrambled Eggs Done Right"
         },
         {
+            "id": 3,
             "url": "https://www.allrecipes.com/recipe/16895/fluffy-french-toast/",
             "ingredients": [
-                "flour",
-                "milk",
-                "eggs",
-                "sugar",
-                "vanilla exctract",
-                "cinnamon",
-                "salt",
-                "bread"
+                "Flour",
+                "Milk",
+                "Eggs",
+                "Sugar",
+                "Vanilla exctract",
+                "Cinnamon",
+                "Salt",
+                "Bread"
             ],
             "name": "Fluffy French Toast"
         }
@@ -44,43 +47,46 @@
 
     "lunch": [
         {
+            "id": 4,
             "url": "https://www.allrecipes.com/recipe/11679/homemade-mac-and-cheese/",
             "ingredients": [
-                "elbow macaroni",
-                "butter",
-                "flour",
-                "milk",
-                "cheddar cheese",
-                "parmesan cheese",
-                "bread crumbs",
-                "paprika"
+                "Elbow macaroni",
+                "Butter",
+                "Flour",
+                "Milk",
+                "Cheddar cheese",
+                "Parmesan cheese",
+                "Bread crumbs",
+                "Paprika"
             ],
             "name": "Homemade Mac and Cheese"
         },
         {
+            "id": 5,
             "url": "https://www.allrecipes.com/recipe/24771/basic-mashed-potatoes/",
             "ingredients": [
-                "potatoes",
-                "butter",
-                "milk",
-                "salt",
-                "pepper"
+                "Potatoes",
+                "Butter",
+                "Milk",
+                "Salt",
+                "Pepper"
             ],
             "name": "Basic Mashed Potatoes"
         },
         {
+            "id": 6,
             "url": "https://www.allrecipes.com/recipe/279903/garlic-brown-sugar-chicken-thighs/",
             "ingredients": [
-                "chicken",
-                "salt",
-                "pepper",
-                "butter",
-                "garlic",
-                "brown sugar",
-                "honey",
-                "oregano",
-                "thyme",
-                "basil"
+                "Chicken",
+                "Salt",
+                "Pepper",
+                "Butter",
+                "Garlic",
+                "Brown sugar",
+                "Honey",
+                "Oregano",
+                "Thyme",
+                "Basil"
             ],
             "name": "Garlic Brown Sugar Chicken Thighs"
         }
@@ -88,50 +94,52 @@
 
     "dinner": [
         {
+            "id": 7,
             "url": "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/",
             "ingredients": [
-                "italian sausage",
-                "grounbd beef",
-                "onion",
-                "garlic",
-                "tomatoes",
-                "tomato paste",
-                "tomato sauce",
-                "water",
-                "sugar",
-                "basil",
-                "fennel seeds",
-                "italian seasoning",
-                "salt",
-                "pepper",
-                "parsley",
-                "lasagna noodles",
-                "ricotta cheese",
-                "eggs",
-                "mozzarella cheese",
-                "parmesan cheese"
+                "Italian sausage",
+                "Ground beef",
+                "Onion",
+                "Garlic",
+                "Tomatoes",
+                "Tomato paste",
+                "Tomato sauce",
+                "Water",
+                "Sugar",
+                "Basil",
+                "Fennel seeds",
+                "Italian seasoning",
+                "Salt",
+                "Pepper",
+                "Parsley",
+                "Lasagna noodles",
+                "Ricotta cheese",
+                "Eggs",
+                "Mozzarella cheese",
+                "Parmesan cheese"
             ],
             "name": "World's Best Lasagna"
         },
         {
+            "id": 8,
             "url": "https://www.allrecipes.com/recipe/216758/moms-fabulous-chicken-pot-pie-with-biscuit-crust/",
             "ingredients": [
-                "butter",
-                "onion",
-                "celery",
-                "carrots",
-                "peas",
-                "parsley",
-                "thyme",
-                "flour",
-                "chicken broth",
-                "half and half",
-                "pepper",
-                "salt",
-                "chicken",
-                "biscuits",
-                "eggs",
-                "water"
+                "Butter",
+                "Onion",
+                "Celery",
+                "Carrots",
+                "Peas",
+                "Parsley",
+                "Thyme",
+                "Flour",
+                "Chicken broth",
+                "Half and half",
+                "Pepper",
+                "Salt",
+                "Chicken",
+                "Biscuits",
+                "Eggs",
+                "Water"
             ],
             "name": "Mom's Fabulous Chicken Pot Pie with Biscuit Crust"
         }

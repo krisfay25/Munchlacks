@@ -4,6 +4,7 @@ import HomeScreen from './Screens/HomeScreen';
 import Pantry from './Screens/Pantry';
 import Recipes from './Screens/RecipePage';
 import NewPantry from './Screens/NewPantry';
+import RecipeDetailed from './Screens/RecipeDetailed';
 import Info from './Screens/Info';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { LogBox } from 'react-native';
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="RecipePage" component={Recipes} />
           <Stack.Screen name="NewPantry" component={NewPantry} />
           <Stack.Screen name="Info" component={Info} />
+          <Stack.Screen name="RecipeDetailed" component={RecipeDetailed} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

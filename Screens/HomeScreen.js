@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
 import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
-import RecipeData from './../test_recipes.json';
 import { Icon } from '@rneui/themed';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.AppDB');
+
 
 const createTable = () => {
 
@@ -25,22 +24,69 @@ const createTable = () => {
 
     db.transaction(tx => {
         tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Potatoes')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Butter')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Milk')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Salt')"
+        )
+    });
+
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Pepper')"
+        )
+    });
+
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Elbow macaroni')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Butter')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
             "INSERT INTO Pantry(Name) VALUES ('Flour')"
         )
     });
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Sugar')"
+            "INSERT INTO Pantry(Name) VALUES ('Milk')"
         )
     });
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Egg')"
+            "INSERT INTO Pantry(Name) VALUES ('Cheddar cheese')"
         )
     });
     db.transaction(tx => {
         tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Cheese')"
+            "INSERT INTO Pantry(Name) VALUES ('Parmesan cheese')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Bread crumbs')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Paprika')"
         )
     });
 
