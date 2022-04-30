@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
 import RecipeData from './../test_recipes.json';
 import { Icon } from '@rneui/themed';

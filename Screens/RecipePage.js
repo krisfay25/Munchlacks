@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Alert, Modal, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity } from 'react-native';
 import { Button } from '@rneui/themed';
 import { useState } from 'react';
+import React from 'react';
 
 const Breakfast = 0;
 const Lunch = 1;
@@ -9,27 +10,77 @@ const Snack = 3;
 
 //Types/Styles of food
 const foodTypes = [
-    "American",
-    "Mexican",
-    "Italian",
-    "Chinese",
-    "Indian",
-    "Thai",
-    "Greek",
-    "Japanese",
-    "Nigerian",
-    "Filipino",
-    "Vietnamese",
-    "Korean",
-    "Cambodian",
-    "French"
+    {
+        id: "1",
+        type: "American"
+    },
+    {
+        id: "2",
+        type: "Mexican"
+    },
+    {
+        id: "3",
+        type: "Italian"
+    },
+    {
+        id: "4",
+        type: "Chinese"
+    },
+    {
+        id: "5",
+        type: "Indian"
+    },
+    {
+        id: "6",
+        type: "Thai"
+    },
+    {
+        id: "7",
+        type: "Greek"
+    },
+    {
+        id: "8",
+        type: "Japanese"
+    },
+    {
+        id: "9",
+        type: "Nigerian"
+    },
+    {
+        id: "10",
+        type: "Filipino"
+    },
+    {
+        id: "11",
+        type: "Vietnamese"
+    },
+    {
+        id: "12",
+        type: "Korean"
+    },
+    {
+        id: "13",
+        type: "Cambodian"
+    },
+    {
+        id: "14",
+        type: "French"
+    }
 ];
+
+const Item = ({ item, onPress, backgroundColor, textColor }) => (
+    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+        <Text style={[styles.type, textColor]}>{item.type}</Text>
+    </TouchableOpacity>
+);
 
 const Recipes = ({ route, navigation }) => {
     var foodType;
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(true);
     const [cuisineVisible, setCuisineVisible] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
+
     let db = route.params;
 
     db.transaction(tx => {
@@ -47,12 +98,19 @@ const Recipes = ({ route, navigation }) => {
         )
     });
 
-    const [value, setValue] = React.useState([]);
+    const renderItem = ({ item }) => {
+        const backgroundColor = item.id === selectedId ? "#d7da58" : "#f5f6d5";
+        const color = item.id === selectedId ? 'white' : 'black';
 
-    const onChange = (event) => {
-        setValue([...event.value]);
+        return (
+            <Item
+                item={item}
+                onPress={() => setSelectedId(item.id)}
+                backgroundColor={{ backgroundColor }}
+                textColor={{ color }}
+            />
+        );
     };
-
 
     return (
         <View style={styles.container}>
@@ -117,7 +175,12 @@ const Recipes = ({ route, navigation }) => {
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
                                 <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
-                                <MultiSelect data={foodTypes} onChange={onChange} value={value} />
+                                <FlatList
+                                    data={foodTypes}
+                                    renderItem={renderItem}
+                                    keyExtractor={(item) => item.id}
+                                    extraData={selectedId}
+                                />
                             </View>
                         </View>
                     </Modal>
@@ -175,7 +238,15 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: "center",
         fontSize: 32,
-    }
+    },
+    item: {
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
+    type: {
+        fontSize: 32,
+    },
 });
 
 export default Recipes;

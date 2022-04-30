@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from '@rneui/themed';
+import React from 'react';
 
 const Info = ({ navigation }) => {
     return (

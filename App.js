@@ -7,6 +7,7 @@ import NewPantry from './Screens/NewPantry';
 import Info from './Screens/Info';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { LogBox } from 'react-native';
+import React from 'react';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',

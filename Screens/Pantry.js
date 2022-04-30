@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Modal, Alert, Pressable, TextInput } from 'react-native';
 import { Button } from '@rneui/base';
 import { useState } from 'react';
+import React from 'react';
 import { Card } from '@rneui/themed';
 
 const Pantry = ({ route, navigation }) => {
