@@ -4,7 +4,8 @@ import { Icon } from '@rneui/themed';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.AppDB');
-const backgroundImage = {uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg"};
+const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" };
+const frame = { uri: "https://4.bp.blogspot.com/-43-hJJPm6G8/VKC0tGdZSpI/AAAAAAAA0oU/9hNMXG6qLgc/s1600/Vintage%2Bgilded%2Bgold%2Bfancy%2Bframe%2Bfree%2Bprintable%2B(1).png" };
 
 const createTable = () => {
 
@@ -99,14 +100,16 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.container}>
 
             <ImageBackground source={backgroundImage} style={styles.container}>
-            
+
                 <Text style={styles.title}>
-                    Munchlacks!
+                    Munchlacks
                 </Text>
 
-                <Image source={require('../Images/munchlax-pokemon.png')}
-                    style={styles.image}
-                />
+                <ImageBackground source={frame} style={styles.frameStyle}>
+                    <Image source={require('../Images/munchlax-pokemon.png')}
+                        style={styles.image}
+                    />
+                </ImageBackground>
 
                 <View style={styles.bottomView}>
                     <View style={styles.button1}>
@@ -117,7 +120,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
 
                     <View style={styles.button2}>
-                        <Button color="#1E6738"  borderRadius= '10'
+                        <Button color="#1E6738"
                             title="Generate Recipes"
                             onPress={() => {
                                 navigation.navigate('RecipePage', db);
@@ -136,7 +139,7 @@ const HomeScreen = ({ navigation }) => {
                     />
                 </View>
 
-            <StatusBar style="auto" />
+                <StatusBar style="auto" />
 
             </ImageBackground>
 
@@ -165,11 +168,13 @@ const styles = StyleSheet.create({
         color: '#335145',
         fontWeight: 'bold',
         top: '8%',
+        fontFamily: 'serif',
     },
     image: {
-        top: '15%',
+        top: '9%',
         width: 200,
         height: 200,
+        right: 15
     },
     bottomView: {
         width: '100%',
@@ -177,7 +182,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        bottom: 270,
+        bottom: 200,
     },
     icon: {
         width: '100%',
@@ -186,13 +191,22 @@ const styles = StyleSheet.create({
         paddingRight: 30,
         bottom: 40,
     },
-    backgroundImage:{
+    backgroundImage: {
         flex: 1,
         width: '100%',
         height: '100%',
         justifyContent: "center",
         alignItems: "center",
         opacity: 0.7
+    },
+    frameStyle: {
+        flex: 1,
+        alignItems: 'center',
+        width: '90%',
+        height: '45%',
+        right: 1,
+        left: 10,
+        top: 90
     }
 });
 

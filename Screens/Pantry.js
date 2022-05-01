@@ -198,11 +198,13 @@ const Pantry = ({ route, navigation }) => {
                                     <View style={styles.button}>
                                         <Button
                                             title="Add Ingredient"
+                                            color="#1E6738"
                                             onPress={() => setModalAddVisible(true)} />
                                     </View>
                                     <View style={styles.button}>
                                         <Button
                                             title="Remove Ingredient"
+                                            color="#1E6738"
                                             onPress={() => setModalRemoveVisible(true)} />
                                     </View>
                                 </View>
@@ -218,6 +220,7 @@ const Pantry = ({ route, navigation }) => {
                                 justifyContent: 'center',
                             }}>
                                 <Button
+                                    color="#1E6738"
                                     title="Add Ingredient"
                                     onPress={() => setModalAddVisible(true)} />
                             </View>
