@@ -1,46 +1,51 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Icon } from '@rneui/themed';
 import React from 'react';
+
+const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" }
 
 const Info = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <View style={styles.body}>
-                <Text style={styles.bodyText}>
-                    <Text style={styles.textTitle}>
-                        Information Page
+            <ImageBackground source={backgroundImage} style={styles.container}>
+                <View style={styles.body}>
+                    <Text style={styles.bodyText}>
+                        <Text style={styles.textTitle}>
+                            Information Page
+                        </Text>
+                        {'\n'}
+                        {'\n'}
+                        Munchlacks is here to help you make recipes with the food you have at home!
+                        {'\n'}
+                        {'\n'}
+                        Here is a quick description of how Munchlacks works.
+                        {'\n'}
+                        {'\n'}
+                        1. Go to the pantry from the homes page and add ingredients to your pantry.
+                        {'\n'}
+                        {'\n'}
+                        2. After adding your ingredients, head back over to the home page and select the "Generate Recipes"
+                        button. Select the settings of your choosing to generate recipes that best fit your cravings.
+                        {'\n'}
+                        {'\n'}
+                        3. You can now choose teh recipe of your desire.
+                        {'\n'}
+                        {'\n'}
+                        4. Let's get cooking!
                     </Text>
-                    {'\n'}
-                    {'\n'}
-                    Munchlacks is here to help you make recipes with the food you have at home!
-                    {'\n'}
-                    {'\n'}
-                    Here is a quick description of how Munchlacks works.
-                    {'\n'}
-                    {'\n'}
-                    1. Go to the pantry from the homes page and add ingredients to your pantry.
-                    {'\n'}
-                    {'\n'}
-                    2. After adding your ingredients, head back over to the home page and select the "Generate Recipes"
-                    button. Select the settings of your choosing to generate recipes that best fit your cravings.
-                    {'\n'}
-                    {'\n'}
-                    3. You can now choose teh recipe of your desire.
-                    {'\n'}
-                    {'\n'}
-                    4. Let's get cooking!
-                </Text>
-            </View>
+                </View>
 
-            <View style={styles.icon}>
-                <Icon
-                    raised
-                    name='home'
-                    type='font-awesome'
-                    color='#4d79ff'
-                    onPress={() => navigation.navigate('Home')} 
-                />
-            </View>
+                <View style={styles.icon}>
+                    <Icon
+                        raised
+                        name='home'
+                        type='font-awesome'
+                        color="#1E6738"
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
+
+            </ImageBackground>
 
         </View>
     );
@@ -49,9 +54,10 @@ const Info = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#58879d',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
+        height: '100%',
     },
     body: {
         textAlign: "center",

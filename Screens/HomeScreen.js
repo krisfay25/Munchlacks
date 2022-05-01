@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Alert, ImageBackground } from 'react-native';
 import { Icon } from '@rneui/themed';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.AppDB');
-
+const backgroundImage = {uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg"};
 
 const createTable = () => {
 
@@ -93,47 +92,53 @@ const createTable = () => {
 }
 
 const HomeScreen = ({ navigation }) => {
+
     createTable();
+
     return (
         <View style={styles.container}>
 
-            <Text style={styles.title}>
-                Munchlacks!
-            </Text>
+            <ImageBackground source={backgroundImage} style={styles.container}>
+            
+                <Text style={styles.title}>
+                    Munchlacks!
+                </Text>
 
-            <Image source={require('../Images/munchlax-pokemon.png')}
-                style={styles.image}
-            />
-
-            <View style={styles.bottomView}>
-                <View style={styles.button1}>
-                    <Button
-                        title="Pantry"
-                        onPress={() => navigation.navigate('Pantry', db)}
-                    />
-                </View>
-
-                <View style={styles.button2}>
-                    <Button
-                        title="Generate Recipes"
-                        onPress={() => {
-                            navigation.navigate('RecipePage', db);
-                        }}
-                    />
-                </View>
-            </View>
-
-            <View style={styles.icon}>
-                <Icon
-                    raised
-                    name='info-circle'
-                    type='font-awesome'
-                    color='#4d79ff'
-                    onPress={() => navigation.navigate('Info')}
+                <Image source={require('../Images/munchlax-pokemon.png')}
+                    style={styles.image}
                 />
-            </View>
+
+                <View style={styles.bottomView}>
+                    <View style={styles.button1}>
+                        <Button color="#1E6738"
+                            title="Pantry"
+                            onPress={() => navigation.navigate('Pantry', db)}
+                        />
+                    </View>
+
+                    <View style={styles.button2}>
+                        <Button color="#1E6738"  borderRadius= '10'
+                            title="Generate Recipes"
+                            onPress={() => {
+                                navigation.navigate('RecipePage', db);
+                            }}
+                        />
+                    </View>
+                </View>
+
+                <View style={styles.icon}>
+                    <Icon
+                        raised
+                        name='info-circle'
+                        type='font-awesome'
+                        color="#1E6738"
+                        onPress={() => navigation.navigate('Info')}
+                    />
+                </View>
 
             <StatusBar style="auto" />
+
+            </ImageBackground>
 
         </View>
     );
@@ -142,22 +147,24 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#58879d',
         alignItems: 'center',
+        width: '100%',
+        height: '100%',
     },
     button1: {
         paddingBottom: 10,
-        width: '50%'
+        width: '50%',
+        borderRadius: 10
     },
     button2: {
         marginTop: 10,
-        width: '50%'
+        width: '50%',
     },
     title: {
-        fontSize: 32,
-        color: '#ffff',
+        fontSize: 50,
+        color: '#335145',
         fontWeight: 'bold',
-        top: '5%',
+        top: '8%',
     },
     image: {
         top: '15%',
@@ -178,6 +185,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         paddingRight: 30,
         bottom: 40,
+    },
+    backgroundImage:{
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: "center",
+        alignItems: "center",
+        opacity: 0.7
     }
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking, ImageBackground } from 'react-native';
 import { Button } from '@rneui/themed';
 import React, { useState } from 'react';
 import RecipeData from './../test_recipes.json';
@@ -8,6 +8,8 @@ const Breakfast = 0;
 const Lunch = 1;
 const Dinner = 2;
 const Snack = 3;
+const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" };
+
 
 //Types/Styles of food
 const foodTypes = [
@@ -232,7 +234,7 @@ const Recipes = ({ route, navigation }) => {
     const recipeItem = ({ item }) => {
         return (
             <Card onPress={() => navigation.navigate('RecipeDetailed', item)}>
-                <Card.Title>{item.name}</Card.Title>
+                <Card.Title onPress={() => navigation.navigate('RecipeDetailed', item)}>{item.name}</Card.Title>
                 <Card.Divider />
                 <Text style={{ color: 'blue' }} onPress={() =>
                     Linking.openURL(item.url)}>{item.url}</Text>
@@ -242,87 +244,92 @@ const Recipes = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
-            {loading ? <Text>Generating Yummy Recipes....</Text> :
-                recipesGenerated ?
-                    <View style={{ position: 'absolute', alignItems: 'center' }}>
-                        <FlatList
-                            data={recipes}
-                            renderItem={recipeItem}
-                            keyExtractor={item => item.id}
-                        />
-                    </View>
-                    :
-                    <View>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                                setModalVisible(!modalVisible);
-                                navigation.navigate('Home');
-                            }}
-                        >
-                            <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
-                                    <Text style={styles.modalText}>What Time is it?</Text>
-                                    <View style={styles.button}>
-                                        <Button title={"Breakfast"}
-                                            onPress={() => {
-                                                setFoodType(Breakfast);
-                                                setModalVisible(false);
-                                                setCuisineVisible(true);
-                                            }} />
-                                    </View>
-                                    <View style={styles.button}>
-                                        <Button title={"Lunch"}
-                                            onPress={() => {
-                                                setFoodType(Lunch);
-                                                setModalVisible(false);
-                                                setCuisineVisible(true);
-                                            }} />
-                                    </View>
-                                    <View style={styles.button}>
-                                        <Button title={"Dinner"}
-                                            onPress={() => {
-                                                setFoodType(Dinner);
-                                                setModalVisible(false);
-                                                setCuisineVisible(true);
-                                            }} />
-                                    </View>
-                                    <View style={styles.button}>
-                                        <Button title={"Snack"}
-                                            onPress={() => {
-                                                foodType = Snack;
-                                                setModalVisible(false);
-                                                setCuisineVisible(true);
-                                            }} />
+
+            <ImageBackground source={backgroundImage} style={styles.container}>
+                {loading ? <Text>Generating Yummy Recipes....</Text> :
+                    recipesGenerated ?
+                        <View style={{ position: 'absolute', alignItems: 'center' }}>
+                            <FlatList
+                                data={recipes}
+                                renderItem={recipeItem}
+                                keyExtractor={item => item.id}
+                            />
+                        </View>
+                        :
+                        <View>
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={modalVisible}
+                                onRequestClose={() => {
+                                    setModalVisible(!modalVisible);
+                                    navigation.navigate('Home');
+                                }}
+                            >
+                                <View style={styles.centeredView}>
+                                    <View style={styles.modalView}>
+                                        <Text style={styles.modalText}>What Time is it?</Text>
+                                        <View style={styles.button}>
+                                            <Button color="#1E6738" title={"Breakfast"}
+                                                onPress={() => {
+                                                    setFoodType(Breakfast);
+                                                    setModalVisible(false);
+                                                    setCuisineVisible(true);
+                                                }} />
+                                        </View>
+                                        <View style={styles.button}>
+                                            <Button title={"Lunch"} color="#1E6738"
+                                                onPress={() => {
+                                                    setFoodType(Lunch);
+                                                    setModalVisible(false);
+                                                    setCuisineVisible(true);
+                                                }} />
+                                        </View>
+                                        <View style={styles.button}>
+                                            <Button title={"Dinner"}
+                                                color="#1E6738"
+                                                onPress={() => {
+                                                    setFoodType(Dinner);
+                                                    setModalVisible(false);
+                                                    setCuisineVisible(true);
+                                                }} />
+                                        </View>
+                                        <View style={styles.button}>
+                                            <Button title={"Snack"} color="#1E6738"
+                                                onPress={() => {
+                                                    foodType = Snack;
+                                                    setModalVisible(false);
+                                                    setCuisineVisible(true);
+                                                }} />
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        </Modal>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={cuisineVisible}
-                            onRequestClose={() => {
-                                setModalVisible(!modalVisible);
-                                setCuisineVisible(!cuisineVisible);
-                            }}
-                        >
-                            <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
-                                    <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
-                                    <FlatList
-                                        data={foodTypes}
-                                        renderItem={renderItem}
-                                        keyExtractor={(item) => item.id}
-                                        extraData={selectedId}
-                                    />
+                            </Modal>
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={cuisineVisible}
+                                onRequestClose={() => {
+                                    setModalVisible(!modalVisible);
+                                    setCuisineVisible(!cuisineVisible);
+                                }}
+                            >
+                                <View style={styles.centeredView}>
+                                    <View style={styles.modalView}>
+                                        <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
+                                        <FlatList
+                                            data={foodTypes}
+                                            renderItem={renderItem}
+                                            keyExtractor={(item) => item.id}
+                                            extraData={selectedId}
+                                        />
+                                    </View>
                                 </View>
-                            </View>
-                        </Modal>
-                    </View >
-            }
+                            </Modal>
+                        </View >
+                }
+
+            </ImageBackground>
 
         </View >
     );
@@ -331,7 +338,8 @@ const Recipes = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#58879d',
+        width: '100%',
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -358,6 +366,7 @@ const styles = StyleSheet.create({
     },
     button: {
         borderRadius: 30,
+        color: "#1E6738",
         padding: 5,
         width: 250,
     },
