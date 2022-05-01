@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking, ImageBackground } from 'react-native';
-import { Button } from '@rneui/themed';
+import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking, ImageBackground, Button } from 'react-native';
 import React, { useState } from 'react';
 import RecipeData from './../test_recipes.json';
-import { Card } from '@rneui/themed';
+import { Card, Icon } from '@rneui/themed';
 
 const Breakfast = 0;
 const Lunch = 1;
@@ -266,16 +265,29 @@ const Recipes = ({ route, navigation }) => {
                                     navigation.navigate('Home');
                                 }}
                             >
+                                <View style={styles.icon}>
+                                    <Icon
+                                        raised
+                                        name='home'
+                                        type='font-awesome'
+                                        color="#1E6738"
+                                        onPress={() => navigation.navigate('Home')}
+                                    />
+                                </View>
+
                                 <View style={styles.centeredView}>
                                     <View style={styles.modalView}>
                                         <Text style={styles.modalText}>What Time is it?</Text>
                                         <View style={styles.button}>
-                                            <Button color="#1E6738" title={"Breakfast"}
+                                            <Button
+                                                title="Breakfast"
+                                                color="#1E6738"
                                                 onPress={() => {
                                                     setFoodType(Breakfast);
                                                     setModalVisible(false);
                                                     setCuisineVisible(true);
-                                                }} />
+                                                }}
+                                            />
                                         </View>
                                         <View style={styles.button}>
                                             <Button title={"Lunch"} color="#1E6738"
@@ -286,7 +298,8 @@ const Recipes = ({ route, navigation }) => {
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
-                                            <Button title={"Dinner"}
+                                            <Button
+                                                title={"Dinner"}
                                                 color="#1E6738"
                                                 onPress={() => {
                                                     setFoodType(Dinner);
@@ -295,7 +308,8 @@ const Recipes = ({ route, navigation }) => {
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
-                                            <Button title={"Snack"} color="#1E6738"
+                                            <Button color="#1E6738"
+                                                title={"Snack"}
                                                 onPress={() => {
                                                     foodType = Snack;
                                                     setModalVisible(false);
@@ -329,6 +343,15 @@ const Recipes = ({ route, navigation }) => {
                         </View >
                 }
 
+                <View style={styles.icon}>
+                    <Icon
+                        raised
+                        name='home'
+                        type='font-awesome'
+                        color="#1E6738"
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
             </ImageBackground>
 
         </View >
@@ -362,7 +385,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        bottom: 50
     },
     button: {
         borderRadius: 30,
@@ -393,6 +417,13 @@ const styles = StyleSheet.create({
     },
     type: {
         fontSize: 32,
+    },
+    icon: {
+        width: '100%',
+        alignItems: 'flex-end',
+        position: 'absolute',
+        paddingRight: 30,
+        bottom: 700,
     },
 });
 

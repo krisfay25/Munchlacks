@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Modal, Alert, Pressable, TextInput, Button, ImageBackground } from 'react-native';
 import { useState } from 'react';
 import React from 'react';
-import { Card } from '@rneui/themed';
+import { Card, Icon } from '@rneui/themed';
 
 const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" }
 
@@ -132,7 +132,7 @@ const Pantry = ({ route, navigation }) => {
                 {loading ? <Text>Loading...</Text> :
                     isPantry ?
                         <View>
-                            <View style={{ flex: 3 }}>
+                            <View style={{ flex: 3, top: 40 }}>
 
                                 <Modal
                                     animationType="slide"
@@ -227,6 +227,16 @@ const Pantry = ({ route, navigation }) => {
                         </View>
                 }
 
+                <View style={styles.icon}>
+                    <Icon
+                        raised
+                        name='home'
+                        type='font-awesome'
+                        color="#1E6738"
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
+
             </ImageBackground>
 
         </View>
@@ -254,13 +264,14 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        padding: 5,
+        padding: 9,
+        bottom: 54
     },
     centeredView: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 25,
     },
     modalView: {
         margin: 20,
@@ -275,7 +286,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 10
     },
     buttonPressable: {
         borderRadius: 20,
@@ -302,6 +313,13 @@ const styles = StyleSheet.create({
         height: 35,
         borderWidth: 1,
         padding: 10
+    },
+    icon: {
+        width: '100%',
+        alignItems: 'flex-end',
+        position: 'absolute',
+        paddingRight: 30,
+        bottom: 700,
     },
 });
 export default Pantry;
