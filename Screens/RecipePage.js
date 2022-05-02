@@ -207,24 +207,10 @@ const Recipes = ({ route, navigation }) => {
                                 </View>
 
                                 :
-                                <View>
-                                    <View style={styles.icon2}>
-                                        <Icon
-                                            accessibilityRole="button"
-                                            accessible={true}
-                                            accessibilityLabel="Go back to list of recipes generated."
-                                            raised
-                                            name='reply'
-                                            type='font-awesome'
-                                            color="#1E6738"
-                                            onPress={() => navigation.navigate('RecipePage', db)}
-                                        />
-                                    </View>
                                     <Card>
                                         <Card.Title>No recipes can be made with your current ingredients.
                                             Consider adding more or select another category</Card.Title>
                                     </Card>
-                                </View>
                             :
                             <View style={{ position: 'absolute', alignItems: 'center' }}>
                                 <FlatList
@@ -408,13 +394,6 @@ const styles = StyleSheet.create({
         paddingRight: 30,
         bottom: 700,
     },
-    icon2: {
-        width: '100%',
-        alignItems: 'flex-end',
-        position: 'absolute',
-        paddingRight: 300,
-        bottom: 700,
-      },
 });
 
 export default Recipes;
