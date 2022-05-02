@@ -283,18 +283,16 @@ const Recipes = ({ route, navigation }) => {
                                                 title="Breakfast"
                                                 color="#1E6738"
                                                 onPress={() => {
-                                                    setFoodType(Breakfast);
                                                     setModalVisible(false);
-                                                    setCuisineVisible(true);
+                                                    getFilteredRecipes(Breakfast);
                                                 }}
                                             />
                                         </View>
                                         <View style={styles.button}>
                                             <Button title={"Lunch"} color="#1E6738"
                                                 onPress={() => {
-                                                    setFoodType(Lunch);
                                                     setModalVisible(false);
-                                                    setCuisineVisible(true);
+                                                    getFilteredRecipes(Lunch);
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
@@ -302,41 +300,18 @@ const Recipes = ({ route, navigation }) => {
                                                 title={"Dinner"}
                                                 color="#1E6738"
                                                 onPress={() => {
-                                                    setFoodType(Dinner);
                                                     setModalVisible(false);
-                                                    setCuisineVisible(true);
+                                                    getFilteredRecipes(Dinner);
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
                                             <Button color="#1E6738"
                                                 title={"Snack"}
                                                 onPress={() => {
-                                                    foodType = Snack;
                                                     setModalVisible(false);
-                                                    setCuisineVisible(true);
+                                                    getFilteredRecipes(Snack);
                                                 }} />
                                         </View>
-                                    </View>
-                                </View>
-                            </Modal>
-                            <Modal
-                                animationType="slide"
-                                transparent={true}
-                                visible={cuisineVisible}
-                                onRequestClose={() => {
-                                    setModalVisible(!modalVisible);
-                                    setCuisineVisible(!cuisineVisible);
-                                }}
-                            >
-                                <View style={styles.centeredView}>
-                                    <View style={styles.modalView}>
-                                        <Text style={styles.modalText}>What Type of Cuisine Would You Like?</Text>
-                                        <FlatList
-                                            data={foodTypes}
-                                            renderItem={renderItem}
-                                            keyExtractor={(item) => item.id}
-                                            extraData={selectedId}
-                                        />
                                     </View>
                                 </View>
                             </Modal>
