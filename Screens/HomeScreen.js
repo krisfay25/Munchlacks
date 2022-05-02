@@ -5,15 +5,8 @@ import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.AppDB');
 const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" };
-const frame = { uri: "https://4.bp.blogspot.com/-43-hJJPm6G8/VKC0tGdZSpI/AAAAAAAA0oU/9hNMXG6qLgc/s1600/Vintage%2Bgilded%2Bgold%2Bfancy%2Bframe%2Bfree%2Bprintable%2B(1).png" };
 
 const createTable = () => {
-
-    db.transaction(tx => {
-        tx.executeSql(
-            "Drop Table Pantry"
-        )
-    });
 
     db.transaction(tx => {
         tx.executeSql(
@@ -22,91 +15,6 @@ const createTable = () => {
         )
     });
 
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Potatoes')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Butter')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Milk')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Salt')"
-        )
-    });
-
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Pepper')"
-        )
-    });
-
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Elbow macaroni')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Butter')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Flour')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Milk')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Cheddar cheese')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Parmesan cheese')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Bread crumbs')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Paprika')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Mayonnaise')"
-        )
-    });
-    db.transaction(tx => {
-        tx.executeSql(
-            "INSERT INTO Pantry(Name) VALUES ('Water')"
-        )
-    });
-
-
-    /*          "Eggs",
-                "Mayonnaise",
-                "Water",
-                "Butter",
-                "Salt",
-                "Pepper"*/
 }
 
 const HomeScreen = ({ navigation }) => {
