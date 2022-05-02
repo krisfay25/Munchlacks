@@ -126,14 +126,12 @@ const HomeScreen = ({ navigation }) => {
                     Munchlacks
                 </Text>
 
-                <ImageBackground source={frame} style={styles.frameStyle}>
                     <Image source={require('../Images/munchlax-pokemon.png')}
                         style={styles.image}
                         accessibilityRole="image"
                         accessible={true}
                         accessibilityLabel="The pokemon munchlax eating food gif. This the logo of the application."
                     />
-                </ImageBackground>
 
                 <View style={styles.bottomView}>
                     <View style={styles.button1}>
@@ -206,10 +204,9 @@ const styles = StyleSheet.create({
         fontFamily: 'serif',
     },
     image: {
-        top: '9%',
+        top: '20%',
         width: 200,
         height: 200,
-        right: 15
     },
     bottomView: {
         width: '100%',
