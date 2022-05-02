@@ -81,7 +81,6 @@ const Recipes = ({ route, navigation }) => {
     const [loading, setLoading] = useState(true);
     const [recipesGenerated, setRecipesGenerated] = useState(false);
     const [modalVisible, setModalVisible] = useState(true);
-    const [cuisineVisible, setCuisineVisible] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
     const [pantry, setPantry] = useState([]);
     const [recipes, setRecipes] = useState([]);
@@ -173,7 +172,6 @@ const Recipes = ({ route, navigation }) => {
                 RecipeData.dinner.forEach(x => {
                     x.ingredients.forEach(y => {
                         pantry.forEach(z => {
-                            console.log(y + ", " + z.Name + " = " + y.localeCompare(z.Name));
                             if (y.localeCompare(z.Name) == 0) {
                                 flag2 = true;
                             }
@@ -193,7 +191,6 @@ const Recipes = ({ route, navigation }) => {
                 break;
         }
         setRecipesGenerated(true);
-        console.log(recipes);
     }
 
     getPantry();
@@ -212,23 +209,6 @@ const Recipes = ({ route, navigation }) => {
             (txObj, error) => console.warn('DB error: ', error)
         )
     });
-
-    const renderItem = ({ item }) => {
-        const backgroundColor = item.id === selectedId ? "#d7da58" : "#f5f6d5";
-        const color = item.id === selectedId ? 'white' : 'black';
-
-        return (
-            <Item
-                item={item}
-                onPress={() => {
-                    setSelectedId(item.id);
-                    getFilteredRecipes(foodType);
-                }}
-                backgroundColor={{ backgroundColor }}
-                textColor={{ color }}
-            />
-        );
-    };
 
     const recipeItem = ({ item }) => {
         return (
