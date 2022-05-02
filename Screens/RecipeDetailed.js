@@ -21,11 +21,11 @@ const RecipeDetailed = ({ navigation, route }) => {
               <Card.Divider />
               <Text style={styles.steps}>{'\n'}Ingredients: </Text>
               <ScrollView style={styles.scrollView}>
-              {ingredientList.map((ingredient) => <Text>{ingredient}</Text>)}
+              {ingredientList.map((ingredient, i) => <Text key={i}>{ingredient}</Text>)}
               </ScrollView>
               <Text style={styles.steps}>{'\n'}Steps: </Text>
               <ScrollView style={styles.scrollView}>
-              {steps.map((step) => <Text>{'\n'}{step}</Text>)}
+              {steps.map((step, i) => <Text key={i}>{'\n'}{step}</Text>)}
               </ScrollView>
               <Card.FeaturedSubtitle>{recipe.url}</Card.FeaturedSubtitle>
             </Card>
