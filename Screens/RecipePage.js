@@ -267,6 +267,9 @@ const Recipes = ({ route, navigation }) => {
                             >
                                 <View style={styles.icon}>
                                     <Icon
+                                        accessibilityRole="button"
+                                        accessible={true}
+                                        accessibilityLabel="Navigates to the home screen"
                                         raised
                                         name='home'
                                         type='font-awesome'
@@ -275,11 +278,18 @@ const Recipes = ({ route, navigation }) => {
                                     />
                                 </View>
 
-                                <View style={styles.centeredView}>
+                                <View
+                                    style={styles.centeredView}
+                                    accessible={true}
+                                    accessibilityLabel="Choose what time of day it is to eat or choose the timing of your choice.">
                                     <View style={styles.modalView}>
-                                        <Text style={styles.modalText}>What Time is it?</Text>
+                                        <Text 
+                                        style={styles.modalText}>What Time is it?</Text>
                                         <View style={styles.button}>
                                             <Button
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                accessibilityLabel="Breakfast"
                                                 title="Breakfast"
                                                 color="#1E6738"
                                                 onPress={() => {
@@ -289,7 +299,12 @@ const Recipes = ({ route, navigation }) => {
                                             />
                                         </View>
                                         <View style={styles.button}>
-                                            <Button title={"Lunch"} color="#1E6738"
+                                            <Button
+                                                title={"Lunch"}
+                                                color="#1E6738"
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                accessibilityLabel="Lunch"
                                                 onPress={() => {
                                                     setModalVisible(false);
                                                     getFilteredRecipes(Lunch);
@@ -299,13 +314,20 @@ const Recipes = ({ route, navigation }) => {
                                             <Button
                                                 title={"Dinner"}
                                                 color="#1E6738"
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                accessibilityLabel="Dinner"
                                                 onPress={() => {
                                                     setModalVisible(false);
                                                     getFilteredRecipes(Dinner);
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
-                                            <Button color="#1E6738"
+                                            <Button 
+                                                accessibilityRole="button"
+                                                accessible={true}
+                                                accessibilityLabel="Snack"
+                                                color="#1E6738"
                                                 title={"Snack"}
                                                 onPress={() => {
                                                     setModalVisible(false);
@@ -320,6 +342,9 @@ const Recipes = ({ route, navigation }) => {
 
                 <View style={styles.icon}>
                     <Icon
+                        accessibilityRole="button"
+                        accessible={true}
+                        accessibilityLabel="Navigates to the home screen"
                         raised
                         name='home'
                         type='font-awesome'

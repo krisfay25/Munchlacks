@@ -113,14 +113,22 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={styles.bottomView}>
                     <View style={styles.button1}>
-                        <Button color="#1E6738"
+                        <Button
+                            accessibilityRole="button"
+                            accessible={true}
+                            accessibilityLabel="Navigates to the pantry screen"
+                            color="#1E6738"
                             title="Pantry"
                             onPress={() => navigation.navigate('Pantry', db)}
                         />
                     </View>
 
                     <View style={styles.button2}>
-                        <Button color="#1E6738"
+                        <Button
+                            accessibilityRole="button"
+                            accessible={true}
+                            accessibilityLabel="Navigates to the generate recipes screen"
+                            color="#1E6738"
                             title="Generate Recipes"
                             onPress={() => {
                                 navigation.navigate('RecipePage', db);
@@ -131,6 +139,9 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={styles.icon}>
                     <Icon
+                        accessibilityRole="button"
+                        accessible={true}
+                        accessibilityLabel="Navigates to the information screen"
                         raised
                         name='info-circle'
                         type='font-awesome'
