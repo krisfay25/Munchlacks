@@ -192,27 +192,45 @@ const Recipes = ({ route, navigation }) => {
                 {loading ? <Text>Generating Yummy Recipes....</Text> :
                     recipesGenerated ?
                         noRecipes ?
-                            oneOff.length > 0 ? 
-                            <View style={{ position: 'absolute', alignItems: 'center' }}>
-                                <Card>
-                                <Card.Title>No recipes can be made with your current ingredients, 
-                                but with one extra ingredient you could make...
-                                </Card.Title>
-                                </Card>
-                                <FlatList
-                                    data={oneOff}
-                                    renderItem={recipeItem}
-                                    keyExtractor={item => item.id}
-                                />
-                            </View>
+                            oneOff.length > 0 ?
+                                <View style={{ position: 'absolute', alignItems: 'center' }}>
+                                    <Card>
+                                        <Card.Title>No recipes can be made with your current ingredients,
+                                            but with one extra ingredient you could make...
+                                        </Card.Title>
+                                    </Card>
+                                    <FlatList
+                                        data={oneOff}
+                                        renderItem={recipeItem}
+                                        keyExtractor={item => item.id}
+                                    />
+                                </View>
 
-                                : <Card>
-                                    <Card.Title>No recipes can be made with your current ingredients.
-                                        Consider adding more or select another category</Card.Title>
-                                </Card>
+                                :
+                                <View>
+                                    <View style={styles.icon2}>
+                                        <Icon
+                                            accessibilityRole="button"
+                                            accessible={true}
+                                            accessibilityLabel="Go back to list of recipes generated."
+                                            raised
+                                            name='reply'
+                                            type='font-awesome'
+                                            color="#1E6738"
+                                            onPress={() => navigation.navigate('RecipePage', db)}
+                                        />
+                                    </View>
+                                    <Card>
+                                        <Card.Title>No recipes can be made with your current ingredients.
+                                            Consider adding more or select another category</Card.Title>
+                                    </Card>
+                                </View>
                             :
                             <View style={{ position: 'absolute', alignItems: 'center' }}>
                                 <FlatList
+                                    accessibilityRole="list"
+                                    accessible={true}
+                                    accessibilityLabel="Here is a list of possible recipes you can make."
                                     data={recipes}
                                     renderItem={recipeItem}
                                     keyExtractor={item => item.id}
@@ -247,8 +265,8 @@ const Recipes = ({ route, navigation }) => {
                                     accessible={true}
                                     accessibilityLabel="Choose what time of day it is to eat or choose the timing of your choice.">
                                     <View style={styles.modalView}>
-                                        <Text 
-                                        style={styles.modalText}>What Time is it?</Text>
+                                        <Text
+                                            style={styles.modalText}>What Time is it?</Text>
                                         <View style={styles.button}>
                                             <Button
                                                 accessibilityRole="button"
@@ -287,7 +305,7 @@ const Recipes = ({ route, navigation }) => {
                                                 }} />
                                         </View>
                                         <View style={styles.button}>
-                                            <Button 
+                                            <Button
                                                 accessibilityRole="button"
                                                 accessible={true}
                                                 accessibilityLabel="Snack"
@@ -316,6 +334,7 @@ const Recipes = ({ route, navigation }) => {
                         onPress={() => navigation.navigate('Home')}
                     />
                 </View>
+
             </ImageBackground>
 
         </View >
@@ -389,6 +408,13 @@ const styles = StyleSheet.create({
         paddingRight: 30,
         bottom: 700,
     },
+    icon2: {
+        width: '100%',
+        alignItems: 'flex-end',
+        position: 'absolute',
+        paddingRight: 300,
+        bottom: 700,
+      },
 });
 
 export default Recipes;

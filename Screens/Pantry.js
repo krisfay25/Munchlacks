@@ -229,6 +229,9 @@ const Pantry = ({ route, navigation }) => {
 
                 <View style={styles.icon}>
                     <Icon
+                        accessibilityRole="button"
+                        accessible={true}
+                        accessibilityLabel="Navigates to the home screen"
                         raised
                         name='home'
                         type='font-awesome'

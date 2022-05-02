@@ -16,19 +16,19 @@ const RecipeDetailed = ({ navigation, route }) => {
     <View>
       <ImageBackground source={backgroundImage} style={styles.container}>
         <View style={styles.cardStyle}>
-            <Card>
-              <Card.Title>{recipe.name}</Card.Title>
-              <Card.Divider />
-              <Text style={styles.steps}>{'\n'}Ingredients: </Text>
-              <ScrollView style={styles.scrollView}>
+          <Card>
+            <Card.Title>{recipe.name}</Card.Title>
+            <Card.Divider />
+            <Text style={styles.steps}>{'\n'}Ingredients: </Text>
+            <ScrollView style={styles.scrollView}>
               {ingredientList.map((ingredient, i) => <Text key={i}>{ingredient}</Text>)}
-              </ScrollView>
-              <Text style={styles.steps}>{'\n'}Steps: </Text>
-              <ScrollView style={styles.scrollView}>
+            </ScrollView>
+            <Text style={styles.steps}>{'\n'}Steps: </Text>
+            <ScrollView style={styles.scrollView}>
               {steps.map((step, i) => <Text key={i}>{'\n'}{step}</Text>)}
-              </ScrollView>
-              <Card.FeaturedSubtitle>{recipe.url}</Card.FeaturedSubtitle>
-            </Card>
+            </ScrollView>
+            <Card.FeaturedSubtitle>{recipe.url}</Card.FeaturedSubtitle>
+          </Card>
         </View>
         <View style={styles.icon}>
           <Icon
@@ -41,6 +41,9 @@ const RecipeDetailed = ({ navigation, route }) => {
         </View>
         <View style={styles.icon2}>
           <Icon
+            accessibilityRole="button"
+            accessible={true}
+            accessibilityLabel="Go back to list of recipes generated."
             raised
             name='reply'
             type='font-awesome'

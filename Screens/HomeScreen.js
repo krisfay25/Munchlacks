@@ -101,7 +101,7 @@ const createTable = () => {
     });
 
 
-    /*                "Eggs",
+    /*          "Eggs",
                 "Mayonnaise",
                 "Water",
                 "Butter",
@@ -118,13 +118,20 @@ const HomeScreen = ({ navigation }) => {
 
             <ImageBackground source={backgroundImage} style={styles.container}>
 
-                <Text style={styles.title}>
+                <Text
+                    style={styles.title}
+                    accessibilityRole="text"
+                    accessible={true}
+                    accessibilityLabel="This is the title of the application. Munchlacks">
                     Munchlacks
                 </Text>
 
                 <ImageBackground source={frame} style={styles.frameStyle}>
                     <Image source={require('../Images/munchlax-pokemon.png')}
                         style={styles.image}
+                        accessibilityRole="image"
+                        accessible={true}
+                        accessibilityLabel="The pokemon munchlax eating food gif. This the logo of the application."
                     />
                 </ImageBackground>
 
