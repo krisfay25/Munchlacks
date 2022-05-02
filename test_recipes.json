@@ -13,6 +13,10 @@
                 "Cheddar cheese",
                 "Tortillas"
             ],
+            "steps": [
+                "1. Beat together eggs and milk. Heat a lightly oiled skillet (or non-stick pan) over medium high heat and cook egg mixture, stirring occasionally, until firm. When almost done, stir in ham, green onions, salt and pepper.",
+                "2. Spoon 1/4 of the egg mixture on top of each tortilla. Sprinkle the eggs with cheese, fold over the tortilla to make a roll and top with salsa if desired."
+            ],
             "name": "Ham and Cheese Breakfast Tortillas"
         },
         {
@@ -25,6 +29,9 @@
                 "Butter",
                 "Salt",
                 "Pepper"
+            ],
+            "steps": [
+                "1. In a cup or small bowl, whisk together the eggs, mayonnaise and water using a fork. Melt margarine in a skillet over low heat. Pour in the eggs, and stir constantly as they cook. Remove the eggs to a plate when they are set, but still moist. Do not over cook. Never add salt or pepper until eggs are on plate, but these are also good without."
             ],
             "name": "Scrambled Eggs Done Right"
         },
@@ -40,6 +47,12 @@
                 "Cinnamon",
                 "Salt",
                 "Bread"
+            ],
+            "steps": [
+                "1. Measure flour into a large mixing bowl. Slowly whisk in milk. Whisk in eggs, sugar, vanilla extract, cinnamon, and salt until smooth.",
+                "2. Heat a lightly oiled griddle or frying pan over medium heat.",
+                "3. Soak bread slices in milk mixture until saturated.",
+                "4. Working in batches, cook bread on the preheated griddle or pan until golden brown on each side. Serve hot."
             ],
             "name": "Fluffy French Toast"
         }
@@ -59,6 +72,13 @@
                 "Bread crumbs",
                 "Paprika"
             ],
+            "steps": [
+                "1. Preheat the oven to 350 degrees F (175 degrees C).",
+                "2. Cook macaroni according to the package directions. Drain.",
+                "3. Melt butter in a medium skillet over low heat. Gradually add flour, whisking until well combined. Slowly pour in milk, whisking constantly until smooth. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well.",
+                "4. Melt butter in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika.",
+                "5. Bake in the preheated oven for 30 minutes. Serve."
+            ],
             "name": "Homemade Mac and Cheese"
         },
         {
@@ -70,6 +90,10 @@
                 "Milk",
                 "Salt",
                 "Pepper"
+            ],
+            "steps": [
+                "1. Bring a pot of salted water to a boil. Add potatoes and cook until tender but still firm, about 15 minutes; drain.",
+                "2. In a small saucepan heat butter and milk over low heat until butter is melted. Using a potato masher or electric beater, slowly blend milk mixture into potatoes until smooth and creamy. Season with salt and pepper to taste."
             ],
             "name": "Basic Mashed Potatoes"
         },
@@ -87,6 +111,14 @@
                 "Oregano",
                 "Thyme",
                 "Basil"
+            ],
+            "steps": [
+                "1. Preheat the oven to 400 degrees F (200 degrees C).",
+                "2. Season chicken thighs with salt and pepper.",
+                "3. Melt 2 tablespoons butter in a large oven-proof skillet over medium-high heat. Add chicken, skin-side down, and sear until brown, 2 to 3 minutes per side. Remove chicken to a plate.",
+                "4. Melt remaining 1 tablespoon butter in the skillet, stirring to loosen any browned bits on the bottom. Add garlic; cook and stir until fragrant, about 30 seconds. Stir in brown sugar, honey, oregano, thyme, and basil until well combined. Turn off the heat and return chicken to the skillet, skin-side down.",
+                "5. Roast in the preheated oven until chicken is no longer pink at the bone and the juices run clear, 25 to 40 minutes. An instant-read thermometer inserted near the bone should read 165 degrees F (74 degrees C).",
+                "6. Drizzle pan sauce over chicken thighs when serving."
             ],
             "name": "Garlic Brown Sugar Chicken Thighs"
         }
@@ -118,6 +150,13 @@
                 "Mozzarella cheese",
                 "Parmesan cheese"
             ],
+            "steps": [
+                "1. In a Dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned. Stir in crushed tomatoes, tomato paste, tomato sauce, and water. Season with sugar, basil, fennel seeds, Italian seasoning, 1 teaspoon salt, pepper, and 2 tablespoons parsley. Simmer, covered, for about 1 1/2 hours, stirring occasionally.",
+                "2. Bring a large pot of lightly salted water to a boil. Cook lasagna noodles in boiling water for 8 to 10 minutes. Drain noodles, and rinse with cold water. In a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt.",
+                "3. Preheat oven to 375 degrees F (190 degrees C).",
+                "4. To assemble, spread 1 1/2 cups of meat sauce in the bottom of a 9x13-inch baking dish. Arrange 6 noodles lengthwise over meat sauce. Spread with one half of the ricotta cheese mixture. Top with a third of mozzarella cheese slices. Spoon 1 1/2 cups meat sauce over mozzarella, and sprinkle with 1/4 cup Parmesan cheese. Repeat layers, and top with remaining mozzarella and Parmesan cheese. Cover with foil: to prevent sticking, either spray foil with cooking spray, or make sure the foil does not touch the cheese.",
+                "5. Bake in preheated oven for 25 minutes. Remove foil, and bake an additional 25 minutes. Cool for 15 minutes before serving."
+            ],
             "name": "World's Best Lasagna"
         },
         {
@@ -140,6 +179,16 @@
                 "Biscuits",
                 "Eggs",
                 "Water"
+            ],
+            "steps": [
+                "1. Preheat the oven to 350 degrees F (175 degrees C).",
+                "2. Melt butter in a skillet over medium-low heat. Add onion, celery, and carrots and cook, stirring occasionally, until tender, about 15 minutes.",
+                "3. Stir in peas, flour, parsley, and thyme and cook, stirring constantly, until the flour coats the vegetables and begins to fry, about 5 minutes.",
+                "4. Whisk in chicken broth and half-and-half, and cook until the sauce is thick and bubbling. Stir in cooked chicken, and season with salt and pepper.",
+                "5. Transfer chicken, vegetables, and sauce into a 7x11-inch baking dish. Arrange biscuits on top of the filling.",
+                "6. Beat egg yolk with water in a small bowl. Brush mixture over the biscuits.",
+                "7. Bake in the preheated oven until the biscuits are golden brown and the pie filling is bubbly, 20 to 25 minutes.",
+                "8. Remove from the oven and let rest for 10 minutes before serving."
             ],
             "name": "Mom's Fabulous Chicken Pot Pie with Biscuit Crust"
         }

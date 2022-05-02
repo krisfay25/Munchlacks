@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon } from '@rneui/themed';
-import { View, StyleSheet, Text, ImageBackground } from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, ScrollView } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase('db.AppDB');
@@ -10,17 +10,25 @@ const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd473
 const RecipeDetailed = ({ navigation, route }) => {
   let recipe = route.params;
   const ingredientList = route.params.ingredients;
+  const steps = route.params.steps;
 
   return (
     <View>
       <ImageBackground source={backgroundImage} style={styles.container}>
         <View style={styles.cardStyle}>
-          <Card>
-            <Card.Title>{recipe.name}</Card.Title>
-            <Card.Divider />
-            {ingredientList.map((ingredient) => <Text>{ingredient}</Text>)}
-            <Card.FeaturedSubtitle>{recipe.url}</Card.FeaturedSubtitle>
-          </Card>
+            <Card>
+              <Card.Title>{recipe.name}</Card.Title>
+              <Card.Divider />
+              <Text style={styles.steps}>{'\n'}Ingredients: </Text>
+              <ScrollView style={styles.scrollView}>
+              {ingredientList.map((ingredient) => <Text>{ingredient}</Text>)}
+              </ScrollView>
+              <Text style={styles.steps}>{'\n'}Steps: </Text>
+              <ScrollView style={styles.scrollView}>
+              {steps.map((step) => <Text>{'\n'}{step}</Text>)}
+              </ScrollView>
+              <Card.FeaturedSubtitle>{recipe.url}</Card.FeaturedSubtitle>
+            </Card>
         </View>
         <View style={styles.icon}>
           <Icon
@@ -57,6 +65,7 @@ const styles = StyleSheet.create({
   },
   cardStyle: {
     top: 140,
+    height: '75%'
   },
   icon: {
     width: '100%',
@@ -71,6 +80,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     paddingRight: 300,
     bottom: 700,
+  },
+  steps: {
+    fontWeight: 'bold',
+  },
+  scrollView: {
+    backgroundColor: 'white',
+    marginHorizontal: 20,
+    height: '35%',
+    width: "95%"
   },
 });
 
