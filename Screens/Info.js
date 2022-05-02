@@ -28,7 +28,7 @@ const Info = ({ navigation }) => {
                         button. Select the settings of your choosing to generate recipes that best fit your cravings.
                         {'\n'}
                         {'\n'}
-                        3. You can now choose teh recipe of your desire.
+                        3. You can now choose the recipe of your desire.
                         {'\n'}
                         {'\n'}
                         4. Let's get cooking!
