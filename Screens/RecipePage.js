@@ -214,9 +214,6 @@ const Recipes = ({ route, navigation }) => {
                             :
                             <View style={{ position: 'absolute', alignItems: 'center' }}>
                                 <FlatList
-                                    accessibilityRole="list"
-                                    accessible={true}
-                                    accessibilityLabel="Here is a list of possible recipes you can make."
                                     data={recipes}
                                     renderItem={recipeItem}
                                     keyExtractor={item => item.id}
