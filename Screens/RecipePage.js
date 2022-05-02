@@ -9,81 +9,13 @@ const Dinner = 2;
 const Snack = 3;
 const backgroundImage = { uri: "https://i.pinimg.com/736x/12/cb/cf/12cbcf58bd47376aecea835e0934f6f5.jpg" };
 
-
-//Types/Styles of food
-const foodTypes = [
-    {
-        id: "1",
-        type: "American"
-    },
-    {
-        id: "2",
-        type: "Mexican"
-    },
-    {
-        id: "3",
-        type: "Italian"
-    },
-    {
-        id: "4",
-        type: "Chinese"
-    },
-    {
-        id: "5",
-        type: "Indian"
-    },
-    {
-        id: "6",
-        type: "Thai"
-    },
-    {
-        id: "7",
-        type: "Greek"
-    },
-    {
-        id: "8",
-        type: "Japanese"
-    },
-    {
-        id: "9",
-        type: "Nigerian"
-    },
-    {
-        id: "10",
-        type: "Filipino"
-    },
-    {
-        id: "11",
-        type: "Vietnamese"
-    },
-    {
-        id: "12",
-        type: "Korean"
-    },
-    {
-        id: "13",
-        type: "Cambodian"
-    },
-    {
-        id: "14",
-        type: "French"
-    }
-];
-
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-        <Text style={[styles.type, textColor]}>{item.type}</Text>
-    </TouchableOpacity>
-);
-
 const Recipes = ({ route, navigation }) => {
-    const [foodType, setFoodType] = useState({});
     const [loading, setLoading] = useState(true);
     const [recipesGenerated, setRecipesGenerated] = useState(false);
     const [modalVisible, setModalVisible] = useState(true);
-    const [selectedId, setSelectedId] = useState(null);
     const [pantry, setPantry] = useState([]);
     const [recipes, setRecipes] = useState([]);
+    const [noRecipes, setNoRecipes] = useState(false);
     let db = route.params;
 
     const getPantry = () => {
@@ -190,6 +122,9 @@ const Recipes = ({ route, navigation }) => {
                 })
                 break;
         }
+        if(recipes.length == 0){
+            setNoRecipes(true);
+        }
         setRecipesGenerated(true);
     }
 
@@ -227,6 +162,10 @@ const Recipes = ({ route, navigation }) => {
             <ImageBackground source={backgroundImage} style={styles.container}>
                 {loading ? <Text>Generating Yummy Recipes....</Text> :
                     recipesGenerated ?
+                        noRecipes ? <Card>
+                            <Card.Title>No recipes can be made with your current ingredients. 
+                            Consider adding more or select another category</Card.Title>
+                            </Card>:
                         <View style={{ position: 'absolute', alignItems: 'center' }}>
                             <FlatList
                                 data={recipes}
