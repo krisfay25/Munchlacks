@@ -89,7 +89,24 @@ const createTable = () => {
             "INSERT INTO Pantry(Name) VALUES ('Paprika')"
         )
     });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Mayonnaise')"
+        )
+    });
+    db.transaction(tx => {
+        tx.executeSql(
+            "INSERT INTO Pantry(Name) VALUES ('Water')"
+        )
+    });
 
+
+    /*                "Eggs",
+                "Mayonnaise",
+                "Water",
+                "Butter",
+                "Salt",
+                "Pepper"*/
 }
 
 const HomeScreen = ({ navigation }) => {

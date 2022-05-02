@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Alert, Modal, FlatList, TouchableOpacity, Linking, ImageBackground, Button } from 'react-native';
+import { StyleSheet, Text, View, Alert, Modal, FlatList, Linking, ImageBackground, Button } from 'react-native';
 import React, { useState } from 'react';
 import RecipeData from './../test_recipes.json';
 import { Card, Icon } from '@rneui/themed';
@@ -15,6 +15,7 @@ const Recipes = ({ route, navigation }) => {
     const [modalVisible, setModalVisible] = useState(true);
     const [pantry, setPantry] = useState([]);
     const [recipes, setRecipes] = useState([]);
+    const [oneOff, setOneOff] = useState([]);
     const [noRecipes, setNoRecipes] = useState(false);
     let db = route.params;
 
@@ -55,6 +56,7 @@ const Recipes = ({ route, navigation }) => {
     const getFilteredRecipes = (foodTime) => {
         var flag = false;
         var flag2 = false;
+        let count = 0;
         switch (foodTime) {
             case Breakfast:
                 RecipeData.breakfast.forEach(x => {
@@ -68,12 +70,21 @@ const Recipes = ({ route, navigation }) => {
                         if (!flag2) {
                             flag = true;
                         }
+                        else {
+                            count++;
+                        }
+
                         flag2 = false;
 
                     })
                     if (!flag) {
                         recipes.push(x);
                     }
+
+                    else if (count == x.ingredients.length - 1) {
+                        oneOff.push(x);
+                    }
+                    count = 0;
                     flag = false;
                 })
                 break;
@@ -90,12 +101,21 @@ const Recipes = ({ route, navigation }) => {
                         if (!flag2) {
                             flag = true;
                         }
+                        else {
+                            count++;
+                        }
+
                         flag2 = false;
 
                     })
                     if (!flag) {
                         recipes.push(x);
                     }
+
+                    else if (count == x.ingredients.length - 1) {
+                        oneOff.push(x);
+                    }
+                    count = 0;
                     flag = false;
                 })
                 break;
@@ -112,17 +132,26 @@ const Recipes = ({ route, navigation }) => {
                         if (!flag2) {
                             flag = true;
                         }
+                        else {
+                            count++;
+                        }
                         flag2 = false;
 
                     })
                     if (!flag) {
                         recipes.push(x);
                     }
+                    else if (count == x.ingredients.length - 1) {
+                        oneOff.push(x);
+                    }
+                    count = 0;
                     flag = false;
                 })
                 break;
         }
-        if(recipes.length == 0){
+
+        if (recipes.length == 0) {
+            // search for recipes missing one ingredient
             setNoRecipes(true);
         }
         setRecipesGenerated(true);
@@ -162,17 +191,33 @@ const Recipes = ({ route, navigation }) => {
             <ImageBackground source={backgroundImage} style={styles.container}>
                 {loading ? <Text>Generating Yummy Recipes....</Text> :
                     recipesGenerated ?
-                        noRecipes ? <Card>
-                            <Card.Title>No recipes can be made with your current ingredients. 
-                            Consider adding more or select another category</Card.Title>
-                            </Card>:
-                        <View style={{ position: 'absolute', alignItems: 'center' }}>
-                            <FlatList
-                                data={recipes}
-                                renderItem={recipeItem}
-                                keyExtractor={item => item.id}
-                            />
-                        </View>
+                        noRecipes ?
+                            oneOff.length > 0 ? 
+                            <View style={{ position: 'absolute', alignItems: 'center' }}>
+                                <Card>
+                                <Card.Title>No recipes can be made with your current ingredients, 
+                                but with one extra ingredient you could make...
+                                </Card.Title>
+                                </Card>
+                                <FlatList
+                                    data={oneOff}
+                                    renderItem={recipeItem}
+                                    keyExtractor={item => item.id}
+                                />
+                            </View>
+
+                                : <Card>
+                                    <Card.Title>No recipes can be made with your current ingredients.
+                                        Consider adding more or select another category</Card.Title>
+                                </Card>
+                            :
+                            <View style={{ position: 'absolute', alignItems: 'center' }}>
+                                <FlatList
+                                    data={recipes}
+                                    renderItem={recipeItem}
+                                    keyExtractor={item => item.id}
+                                />
+                            </View>
                         :
                         <View>
                             <Modal
